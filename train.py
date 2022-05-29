@@ -94,7 +94,13 @@ if __name__ == "__main__":
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
     net = ST_U(config, img_size=args.img_size, num_classes=args.num_classes).cuda()
-    net.load_from(config)
-    print(sum(x.numel() for x in net.parameters()))
-    trainer = {'Synapse': trainer_synapse,}
+    pretrained_path = config.MODEL.PRETRAIN_CKPT
+    if pretrained_path is not None:
+        checkpoint = torch.load(pretrained_path, map_location="cuda" if torch.cuda.is_available() else "cpu")
+        net.load_state_dict(checkpoint)
+        print("Loaded pretrained model.")
+    else:
+        print("No pretrained model.")
+    print("All parameters:", sum(x.numel() for x in net.parameters()))
+    trainer = {'Synapse': trainer_synapse, }
     trainer[dataset_name](args, net, args.output_dir)
