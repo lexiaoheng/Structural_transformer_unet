@@ -2,7 +2,7 @@ MODEL:
   TYPE: st
   NAME: StructuralTransformer2222
   DROP_PATH_RATE: 0.2
-  PRETRAIN_CKPT: "./pretrained_ckpt/model.pth"
+  PRETRAIN_CKPT: None
   SWIN:
       FINAL_UPSAMPLE: "expand_first"
       EMBED_DIM: 96
