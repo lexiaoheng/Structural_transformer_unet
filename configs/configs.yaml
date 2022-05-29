@@ -1,0 +1,12 @@
+MODEL:
+  TYPE: st
+  NAME: StructuralTransformer2222
+  DROP_PATH_RATE: 0.2
+  PRETRAIN_CKPT: "./pretrained_ckpt/model.pth"
+  SWIN:
+      FINAL_UPSAMPLE: "expand_first"
+      EMBED_DIM: 96
+      DEPTHS: [ 2, 2, 2, 2 ]
+      DECODER_DEPTHS: [ 2, 2, 2, 1 ]
+      NUM_HEADS: [ 3, 6, 12, 24 ]
+      WINDOW_SIZE: 7
