@@ -1,6 +1,6 @@
 MODEL:
   TYPE: st
-  NAME: StructuralTransformer2222
+  NAME: StructuralTransformer8422
   DROP_PATH_RATE: 0.2
   PRETRAIN_CKPT: None
   SWIN:
